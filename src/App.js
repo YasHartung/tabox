@@ -1,26 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Dashboard from './containers/Dashboard'
+import { connect } from 'react-redux'
+import SignIn from './components/SignIn';
 
-function App() {
+
+function App (props) {
+
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        props.currentUser 
+        ?
+        <Dashboard />
+        :
+        <SignIn />
+      }
+      
     </div>
-  );
+  )
+
+    }
+
+function msp(state){
+  return state
 }
 
-export default App;
+function mdp(dispatch){
+  return{ 
+    like: () => {
+      dispatch({type: "INCREMENT_LIKES"})
+    }
+  }
+}
+
+export default connect(msp, mdp)(App);
