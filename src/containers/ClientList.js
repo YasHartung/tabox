@@ -2,7 +2,7 @@ import React from 'react'
 import { ListGroup } from 'react-bootstrap';
 
 
-class ClientList extends React.Component {
+class ClientList extends React.Component { 
 
     render(){
         return <div>

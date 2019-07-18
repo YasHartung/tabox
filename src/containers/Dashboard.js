@@ -2,8 +2,7 @@ import React from 'react'
 import ClientList from './ClientList'
 import ClientDashboard from './ClientDashboard'
 import { Container, Row, Col, ListGroup } from 'react-bootstrap';
-
-
+import UserDashboard from './UserDashboard'
 
 
 class Dashboard extends React.Component {
@@ -19,7 +18,7 @@ class Dashboard extends React.Component {
                 <ClientList/>
               </Col>
               <Col xs={9}>
-                <ClientDashboard />
+                <UserDashboard />
               </Col>
              
             </Row>
