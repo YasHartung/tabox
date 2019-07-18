@@ -1,18 +1,24 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
 import ClientList from './ClientList'
 import ClientDashboard from './ClientDashboard'
 import { Container, Row, Col, ListGroup } from 'react-bootstrap';
 import UserDashboard from './UserDashboard'
 
 
-class Dashboard extends React.Component {
+function Dashboard (props){
 
     
 
-    render(){
+
         return  (
           <Container>
-            
+            <Row>
+              <Col>
+              <h2>Welcome, {props.currentUser.username}</h2>
+              </Col>
+            </Row>
             <Row>
               <Col xs={3}>
                 <ClientList/>
@@ -25,7 +31,13 @@ class Dashboard extends React.Component {
             
           </Container>
         )
-    }
+    
 }
 
-export default Dashboard
+function msp(state){
+  console.log(state)
+    return state
+  }
+  
+
+export default connect(msp)(Dashboard);

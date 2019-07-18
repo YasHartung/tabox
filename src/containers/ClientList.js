@@ -1,21 +1,26 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
 import { ListGroup } from 'react-bootstrap';
 
 
 class ClientList extends React.Component { 
 
     render(){
+        console.log("client list props", this.props)
         return <div>
-            <p>ClientList</p>
+            <h4>ClientList</h4>
             <ListGroup>
-                <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-                <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-                <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+                {this.props.clients.map(client => {
+                 return   <ListGroup.Item key={client.id}>{client.name}</ListGroup.Item>
+                })
+            }
             </ListGroup>
         </div>
     }
 }
+function msp(state){
+    return {...state.currentUser}
+}
 
-export default ClientList
+export default connect(msp)(ClientList)

@@ -3,7 +3,8 @@ import { SET_CURRENT_USER, UPDATE_USERNAME_FORM } from './types'
 
 const defaultState = {
    currentUser: null,
-   usernameForm: "",
+   usernameForm: ""
+   
   }
 
 function reducer(prevState = defaultState, action){
@@ -16,7 +17,6 @@ function reducer(prevState = defaultState, action){
       return {...prevState, currentUser: action.payload}
     case UPDATE_USERNAME_FORM:
       return {...prevState, usernameForm: action.payload}
-  
     default:
       return prevState
   }
