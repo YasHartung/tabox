@@ -16,7 +16,7 @@ function Dashboard (props){
           <Container>
             <Row>
               <Col>
-              <h2>Welcome, {props.currentUser.username}</h2>
+              <h4>Welcome, {props.currentUser.username}. Here's your Dashboard</h4>
               </Col>
             </Row>
             <Row>

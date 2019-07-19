@@ -9,10 +9,14 @@ class ClientList extends React.Component {
     render(){
         console.log("client list props", this.props)
         return <div>
-            <h4>ClientList</h4>
+            
+            <br></br>
+            <br></br>
+          
+            <p>Client List</p>
             <ListGroup>
                 {this.props.clients.map(client => {
-                 return   <ListGroup.Item key={client.id}>{client.name}</ListGroup.Item>
+                 return   <ListGroup.Item variant="info" key={client.id}>{client.name}</ListGroup.Item>
                 })
             }
             </ListGroup>

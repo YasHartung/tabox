@@ -24,7 +24,7 @@ class UserDashboard extends React.Component{
         console.log(this.state)
         return(
             <>
-             <h4>Your Dashboard</h4>
+           
              {
                  this.state.formActive
                  ?
@@ -32,8 +32,8 @@ class UserDashboard extends React.Component{
                  :
                  <>
                     <Button onClick={this.toggleForm} variant="outline-info" size="sm" className='float-right'> Add a New Client</Button> <br></br><br></br>
-                    <LogContainer />
                     <TaskboardContainer/>
+                    <LogContainer />
                     <SessionContainer />
                 </>
              }
