@@ -40,7 +40,7 @@ class NewClientForm extends React.Component{
                     <Form.Label>Client Phone Number:</Form.Label>
                     <Form.Control type="phone" name="phone" placeholder="Enter Phone Number" onChange={this.handleChange}  value={this.state.phone} />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="info" type="submit">
                 Submit
                 </Button>
             </Form>

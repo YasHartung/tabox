@@ -7,7 +7,7 @@ import { ListGroup } from 'react-bootstrap';
 class ClientList extends React.Component { 
 
     render(){
-        console.log("client list props", this.props)
+   
         return <div>
             
             <br></br>

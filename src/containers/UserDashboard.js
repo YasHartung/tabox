@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { openClientForm } from '../actions'
+
 
 import { Button } from 'react-bootstrap';
 
@@ -21,7 +21,6 @@ class UserDashboard extends React.Component{
     }
  
     render(){
-        console.log(this.state)
         return(
             <>
            
@@ -45,7 +44,6 @@ class UserDashboard extends React.Component{
 
 
 function msp(state){
-    console.log(state)
       return state
     }
     
