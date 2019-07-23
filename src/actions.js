@@ -1,5 +1,6 @@
 
- import { SET_CURRENT_USER, UPDATE_USERNAME_FORM, TOGGLE_DELETE_ALERT, SET_CURRENT_CLIENT } from './types'
+ import { SET_CURRENT_USER, UPDATE_USERNAME_FORM, TOGGLE_DELETE_ALERT, SET_CURRENT_CLIENT,
+    RESET_CURRENT_CLIENT } from './types'
      
      
      
@@ -87,6 +88,28 @@
         }
       }
 
+      function updateCurrentClient(client){
+          console.log("reached update current client action")
+          return function(dispatch){
+            fetch(`http://localhost:3000/clients/${client.id}`) 
+           .then(r => r.json())
+            .then(client => {
+                
+                dispatch({type: SET_CURRENT_CLIENT, payload: client})
+                }
+            )
+          }
+
+      }
+      function updateCurrentUser(user){
+          
+        return {type: SET_CURRENT_USER, payload: user}
+      }
+
+      function resetCurrentClient(){
+          return {type: RESET_CURRENT_CLIENT}
+      }
+
 
       export {
           login,
@@ -94,6 +117,9 @@
           createClient,
           deleteTaskboardAlert,
           deleteTaskboard,
-          addTask
+          addTask,
+          updateCurrentClient,
+          updateCurrentUser,
+          resetCurrentClient
       }
   

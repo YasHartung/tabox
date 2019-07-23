@@ -2,11 +2,16 @@ document.addEventListener('DOMContentLoaded', function() {
     chrome.extension.getBackgroundPage().console.log('foo')
     var saveSessionButton = document.getElementById('saveSession');
     saveSessionButton.addEventListener('click', function() {
-        chrome.extension.getBackgroundPage().console.log('clicked save session')
-            chrome.tabs.query({}, function(tabs){
-                chrome.extension.getBackgroundPage().console.log('chrome tabs query')
-                chrome.extension.getBackgroundPage().console.log(tabs)
-            })
+        chrome.extension.getBackgroundPage().console.log('in event listener')
+        chrome.windows.getCurrent( function( windows){
+
+            chrome.extension.getBackgroundPage().console.log(windows)
+        })
+        // chrome.extension.getBackgroundPage().console.log('clicked save session')
+        //     chrome.tabs.query({}, function(tabs){
+        //         chrome.extension.getBackgroundPage().console.log('chrome tabs query')
+        //         chrome.extension.getBackgroundPage().console.log(tabs)
+        //     })
     //   chrome.tabs.getSelected(null, function(tab) {
     //     d = document;
   

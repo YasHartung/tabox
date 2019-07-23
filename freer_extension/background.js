@@ -1,5 +1,6 @@
+console.log("background console log")
 chrome.browserAction.onClicked.addListener(function(tab) {
-    console.log("background console log")
+    chrome.extension.getBackgroundPage().console.log('background console log query')
     // Send a message to the active tab
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
       var activeTab = tabs[0];

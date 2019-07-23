@@ -3,20 +3,16 @@ import { connect } from 'react-redux'
 
 import ClientList from './ClientList'
 import ClientDashboard from './ClientDashboard'
-import { Container, Row, Col, ListGroup } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import UserDashboard from './UserDashboard'
 
 
 function Dashboard (props){
-
-    
-
-
         return  (
           <Container>
             <Row>
               <Col>
-              <h4>Welcome, {props.currentUser.username}. Here's your Dashboard</h4>
+              <h4>Welcome, {props.currentUser.username}. Here's {props.currentClient.id ? props.currentClient.name : "your"} Dashboard</h4>
               </Col>
             </Row>
             <Row>
@@ -24,7 +20,14 @@ function Dashboard (props){
                 <ClientList/>
               </Col>
               <Col xs={9}>
-                <UserDashboard />
+                {
+                  props.currentClient.id
+                  ?
+                  <ClientDashboard/>
+                  :
+                  <UserDashboard />
+                }
+                
               </Col>
              
             </Row>
@@ -35,7 +38,6 @@ function Dashboard (props){
 }
 
 function msp(state){
-  console.log(state)
     return state
   }
   

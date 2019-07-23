@@ -32,7 +32,7 @@ class UserDashboard extends React.Component{
                  <>
                     <Button onClick={this.toggleForm} variant="outline-info" size="sm" className='float-right'> Add a New Client</Button> <br></br><br></br>
                     <TaskboardContainer/>
-                    <LogContainer />
+                    
                     <SessionContainer />
                 </>
              }

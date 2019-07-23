@@ -2,7 +2,7 @@
     "name": "Freer Extension",
     "version": "1.0",
     "description": "Save Sessions and Logs to Freer!",
-    "permissions": ["activeTab", "declarativeContent", "storage", "tabs", "idle"],
+    "permissions": ["sessions", "*://*/*", "declarativeContent", "storage", "tabs", "idle", "<all_urls>"],
     "background": {
       "scripts": ["background.js", "popup.js"],
       "persistent": false

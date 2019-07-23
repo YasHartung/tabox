@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Modal, Button, Form } from 'react-bootstrap';
 
 
-import {deleteTaskboardAlert, deleteTaskboard} from '../actions'
+import {deleteTaskboardAlert, deleteTaskboard, updateCurrentUser} from '../actions'
 import Taskboard from '../components/Taskboard'
 
 class TaskboardContainer extends React.Component{
@@ -20,7 +20,7 @@ class TaskboardContainer extends React.Component{
         let taskboard={
             name: this.state.title,
             user_id: this.props.currentUser.id,
-            client_id: this.props.currentClient
+            client_id: this.props.currentClient.id
             
         }
         
@@ -32,9 +32,10 @@ class TaskboardContainer extends React.Component{
             method: "POST",
             body: JSON.stringify(taskboard)
         }).then(r => r.json())
-        .then(data => {
-            this.setState({show: false})
-        })
+        .then(user => {
+            this.props.updateCurrentUser(user)
+        }).then(() => this.setState({show: false}))
+        
     }
     handleChange = (e) => {
        
@@ -43,15 +44,15 @@ class TaskboardContainer extends React.Component{
 
 
     render(){
-        console.log("Taskboard Container props",this.props)
+        
 
         return(
             <>
                 {
                     this.props.currentUser.taskboards
                     ?
-                    this.props.currentUser.taskboards.map(taskboard => {
-                        return <Taskboard key={taskboard.name} taskboard={taskboard}/>
+                    this.props.currentUser.taskboards.filter(taskboard =>  this.props.currentClient.id === taskboard.client_id).map(taskboard => {
+                        return  <Taskboard key={taskboard.name} taskboard={taskboard}/>
                     })
                     :
                     null
@@ -107,4 +108,4 @@ function msp(state){
     return state
 }
 
-export default connect(msp, { deleteTaskboardAlert, deleteTaskboard })(TaskboardContainer)
+export default connect(msp, { deleteTaskboardAlert, deleteTaskboard, updateCurrentUser })(TaskboardContainer)
