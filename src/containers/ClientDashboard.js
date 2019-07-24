@@ -34,6 +34,7 @@ class ClientDashboard extends React.Component{
              <SessionContainer />
 
              <Button variant="danger" onClick={this.handleClick}>Delete Client</Button>
+            <p>Contact {this.props.currentClient.name}: email: {this.props.currentClient.email}, tel: {this.props.currentClient.phone}</p>
             </>
         )
     }

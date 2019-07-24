@@ -18,3 +18,12 @@ ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementB
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+
+const extensionID = "glebelfldkadpefllobfgcojjchbgjnk"
+
+chrome.runtime.sendMessage(extensionID, {openUrlInEditor: "www.facebook.com"}, function(response){
+    console.log(response)
+    
+
+})

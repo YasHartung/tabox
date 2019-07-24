@@ -1,9 +1,11 @@
-console.log("background console log")
-chrome.browserAction.onClicked.addListener(function(tab) {
-    chrome.extension.getBackgroundPage().console.log('background console log query')
-    // Send a message to the active tab
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-      var activeTab = tabs[0];
-      chrome.tabs.sendMessage(activeTab.id, {"message": "clicked_browser_action"});
-    });
+console.log("console log from background page")
+chrome.tabs.query({}, function(tabs){
+         console.log(tabs)
+})
+
+chrome.runtime.onMessageExternal.addListener(
+  function(request, sender, sendResponse) {
+    
+    if (request.openUrlInEditor)
+      openUrl(request.openUrlInEditor);
   });

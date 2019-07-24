@@ -4,7 +4,7 @@
     "description": "Save Sessions and Logs to Freer!",
     "permissions": ["sessions", "*://*/*", "declarativeContent", "storage", "tabs", "idle", "<all_urls>"],
     "background": {
-      "scripts": ["background.js", "popup.js"],
+      "scripts": ["background.js"],
       "persistent": false
     },
     "browser_action": {
