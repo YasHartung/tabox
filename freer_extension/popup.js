@@ -14,7 +14,11 @@ document.addEventListener('DOMContentLoaded', function() {
             chrome.extension.getBackgroundPage().console.log("Array",urlArr)
             chrome.extension.getBackgroundPage().console.log("String", urlString)
 
-            chrome.storage.sync.set({key: urlString})
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                chrome.tabs.sendMessage(tabs[0].id, {session: urlString}, function(response) {
+                  console.log(response.farewell);
+                });
+              });
    })
         
         // chrome.extension.getBackgroundPage().console.log('clicked save session')

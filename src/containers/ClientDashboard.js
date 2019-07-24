@@ -30,7 +30,7 @@ class ClientDashboard extends React.Component{
         return(
             <>
              <TaskboardContainer/>
-             <LogContainer />
+            
              <SessionContainer />
 
              <Button variant="danger" onClick={this.handleClick}>Delete Client</Button>

@@ -20,10 +20,5 @@ ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementB
 serviceWorker.unregister();
 
 
-const extensionID = "glebelfldkadpefllobfgcojjchbgjnk"
-
-chrome.runtime.sendMessage(extensionID, {openUrlInEditor: "www.facebook.com"}, function(response){
-    console.log(response)
-    
-
-})
+var data = { type: "FROM_PAGE", text: "Hello from the webpage!" };
+window.postMessage(data, "*");
