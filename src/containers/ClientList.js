@@ -1,18 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { ListGroup } from 'react-bootstrap';
+import {updateCurrentClient, resetCurrentClient} from '../actions'
+
+import { ListGroup, Button } from 'react-bootstrap';
 
 
 class ClientList extends React.Component { 
 
     render(){
-        console.log("client list props", this.props)
+   
         return <div>
-            <h4>ClientList</h4>
+            
+            <br></br>
+            <br></br>
+            {this.props.currentClient.id
+            ?
+            <Button onClick={this.props.resetCurrentClient} variant="outline-info"> My Dashboard</Button>
+            :
+            null
+            }
+            <br></br>
+            <p>Client List</p>
             <ListGroup>
-                {this.props.clients.map(client => {
-                 return   <ListGroup.Item key={client.id}>{client.name}</ListGroup.Item>
+        
+                {this.props.currentUser.clients.map(client => {
+                 return   <ListGroup.Item onClick={()=> this.props.updateCurrentClient(client)} variant="info" key={client.id}>{client.name}</ListGroup.Item>
                 })
             }
             </ListGroup>
@@ -20,7 +33,7 @@ class ClientList extends React.Component {
     }
 }
 function msp(state){
-    return {...state.currentUser}
+    return state
 }
 
-export default connect(msp)(ClientList)
+export default connect(msp, { updateCurrentClient, resetCurrentClient })(ClientList)

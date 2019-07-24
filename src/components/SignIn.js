@@ -22,7 +22,7 @@ function SignIn(props){
           <Form.Control type="username" placeholder="Enter Username" onChange={(e) => props.updateUsernameForm(e.target.value)} name="username" value={props.usernameForm} placeholder="Enter Username..."/>
       
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="info" type="submit">
           Submit
         </Button>
       </Form>
@@ -31,7 +31,7 @@ function SignIn(props){
     )
 }
 function msp(state){
-  console.log(state)
+  
     return state
   }
   
