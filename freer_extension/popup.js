@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     chrome.extension.getBackgroundPage().console.log('foo')
     let saveSessionButton = document.getElementById('saveSession');
+    let restoreSessionButton = document.getElementById('restoreSession')
     
     saveSessionButton.addEventListener('click', function() {
         chrome.extension.getBackgroundPage().chrome.tabs.query({}, function(tabs){
@@ -41,4 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
     //     f.submit();
     //   });
     }, false);
+
+    restoreSessionButton.addEventListener('click', function(){
+        chrome.extension.getBackgroundPage().console.log("clicked restore")
+    })
   }, false);

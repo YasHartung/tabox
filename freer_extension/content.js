@@ -6,5 +6,5 @@ chrome.runtime.onMessage.addListener(
       console.log(sender.tab ?
                   "from a content script:" + sender.tab.url :
                    request);
-                   localStorage.setItem("chrome_session", request.session)
+                   localStorage.setItem("chrome_session_save", request.session)
     });
