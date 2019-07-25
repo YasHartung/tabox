@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import {  Button } from 'react-bootstrap';
 
 import { updateCurrentUser, resetCurrentClient} from '../actions'
-import LogContainer from './LogContainer'
+
 import TaskboardContainer from './TaskboardContainer';
 import SessionContainer from './SessionContainer'
 

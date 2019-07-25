@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     chrome.extension.getBackgroundPage().console.log('foo')
     let saveSessionButton = document.getElementById('saveSession');
+    let restoreSessionButton = document.getElementById('restoreSession')
     
     saveSessionButton.addEventListener('click', function() {
         chrome.extension.getBackgroundPage().chrome.tabs.query({}, function(tabs){
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             chrome.extension.getBackgroundPage().console.log("String", urlString)
 
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                chrome.tabs.sendMessage(tabs[0].id, {session: urlString}, function(response) {
+                chrome.tabs.sendMessage(tabs[0].id, {saveSession: urlString}, function(response) {
                   console.log(response.farewell);
                 });
               });
@@ -41,4 +42,21 @@ document.addEventListener('DOMContentLoaded', function() {
     //     f.submit();
     //   });
     }, false);
+
+    restoreSessionButton.addEventListener('click', function(){
+        chrome.extension.getBackgroundPage().console.log("clicked restore")
+
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, {restoreSession: "Please Restore Session"}, function(response) {
+                chrome.extension.getBackgroundPage().console.log(response);
+                
+                let restoreArr = response.sessionToRestore.split(',')
+                chrome.extension.getBackgroundPage().console.log(restoreArr);
+
+                restoreArr.forEach(url => {
+                    chrome.tabs.create({url: url })
+                })
+            });
+        })
+    })
   }, false);

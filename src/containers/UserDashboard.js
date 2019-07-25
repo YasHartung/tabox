@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 
 import { Button } from 'react-bootstrap';
 
-import LogContainer from './LogContainer'
 import TaskboardContainer from './TaskboardContainer';
 import SessionContainer from './SessionContainer'
 import NewClientForm from '../components/NewClientForm'
