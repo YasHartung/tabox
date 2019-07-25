@@ -8,31 +8,15 @@ import {  Button, Table } from 'react-bootstrap';
 class SessionContainer extends React.Component{
 
     restoreSession = (session) => {
-        console.log("session from react",session)
+     
         localStorage.setItem("chromeRestoreSession", session.tabs)
     }
 
-    getSession = () => {
-      let urlStrings =  localStorage.getItem("chromeSaveSession")
-      console.log("FROM REACT!!!",urlStrings)
-      console.log("lenght", urlStrings.length)
+   
 
-      fetch(`http://localhost:3000/sessions`, {
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            method: "POST",
-            body: JSON.stringify({tabs: urlStrings, client_id: this.props.currentClient.id})
-        } ).then(r => r.json())
-        .then(user => {
-                this.props.updateCurrentUser(user)
-            }
-        ).then( () => {
-            this.props.updateCurrentClient(this.props.currentClient)
-        })
-        
 
+    sessionTable = () => {
+        return this.props.currentClient.sessions.slice(0,5).reverse()
     }
 
     render(){
@@ -51,7 +35,7 @@ class SessionContainer extends React.Component{
                 </thead>
                 <tbody>
                     {
-                        this.props.currentClient.sessions.map( session => {
+                        this.sessionTable().map( session => {
                             return (
                                 <tr key={session.id}>
                                     <td>1</td>
@@ -72,7 +56,7 @@ class SessionContainer extends React.Component{
             {
                 this.props.currentClient.id
                 ?
-                <Button variant='info' onClick={this.getSession}>Pull Chrome Session from Container</Button>
+                <Button variant='info' onClick={this.getSession}>Pull Chrome Session from Extension</Button>
                 :
                 null
             }

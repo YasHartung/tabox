@@ -59,4 +59,28 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         })
     })
-  }, false);
+  
+
+  window.setInterval(checkRestoreSesssion, 500);
+
+  function checkRestoreSesssion(){
+    chrome.extension.getBackgroundPage().console.log("set Interval`");
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {restoreSession: "Please Restore Session"}, function(response) {
+            chrome.extension.getBackgroundPage().console.log(response);
+            if(response.sessionToRestore){
+
+                let restoreArr = response.sessionToRestore.split(',')
+                chrome.extension.getBackgroundPage().console.log(restoreArr);
+                
+                restoreArr.forEach(url => {
+                    chrome.tabs.create({url: url })
+                })
+
+            }
+            
+        });
+
+  })
+}
+}, false);
