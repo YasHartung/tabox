@@ -8,11 +8,12 @@ import {  Button, Table } from 'react-bootstrap';
 class SessionContainer extends React.Component{
 
     restoreSession = (session) => {
-        localStorage.setItem("chrome_session_restore", session)
+        console.log("session from react",session)
+        localStorage.setItem("chromeRestoreSession", session.tabs)
     }
 
     getSession = () => {
-      let urlStrings =  localStorage.getItem("chrome_session_save")
+      let urlStrings =  localStorage.getItem("chromeSaveSession")
       console.log("FROM REACT!!!",urlStrings)
       console.log("lenght", urlStrings.length)
 
