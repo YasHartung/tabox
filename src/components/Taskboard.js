@@ -110,7 +110,7 @@ class Taskboard extends React.Component{
                         <Form.Group onSubmit={this.addTaskToBoard} controlId="exampleForm.ControlSelect1">
                             <Form.Label>Add To Another Taskboard?</Form.Label>
                             <Form.Control onChange={this.handleSelected} value={this.state.selectedTaskboard} as="select">
-                                {this.props.currentUser.taskboards.filter(taskboard =>  taskboard.client_id === null && taskboard.id !== this.props.taskboard.id).map(taskboard => {
+                                {this.props.currentUser.taskboards.filter(taskboard =>  taskboard.project_id === null && taskboard.id !== this.props.taskboard.id).map(taskboard => {
                                     return  <option value={taskboard.id} key={taskboard.id}>{taskboard.name}</option>
                                 })}
                             

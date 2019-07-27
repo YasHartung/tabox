@@ -20,7 +20,7 @@ class TaskboardContainer extends React.Component{
         let taskboard={
             name: this.state.title,
             user_id: this.props.currentUser.id,
-            client_id: this.props.currentClient.id
+            project_id: this.props.currentProject.id
             
         }
         
@@ -51,7 +51,7 @@ class TaskboardContainer extends React.Component{
                 {
                     this.props.currentUser.taskboards
                     ?
-                    this.props.currentUser.taskboards.filter(taskboard =>  this.props.currentClient.id === taskboard.client_id).map(taskboard => {
+                    this.props.currentUser.taskboards.filter(taskboard =>  this.props.currentProject.id === taskboard.project_id).map(taskboard => {
                         return  <Taskboard key={taskboard.name} taskboard={taskboard}/>
                     })
                     :
@@ -62,7 +62,7 @@ class TaskboardContainer extends React.Component{
                 <Button variant="info" onClick={this.handleShow}>
                     Add Taskboard
                 </Button>
-
+                
                 <Modal show={this.state.show} onHide={this.handleClose}>
                     <Modal.Body>
                     <Form.Group controlId="formBasicEmail">

@@ -1,6 +1,6 @@
 
- import { SET_CURRENT_USER, UPDATE_USERNAME_FORM, TOGGLE_DELETE_ALERT, SET_CURRENT_CLIENT,
-    RESET_CURRENT_CLIENT } from './types'
+ import { SET_CURRENT_USER, UPDATE_USERNAME_FORM, TOGGLE_DELETE_ALERT, SET_CURRENT_PROJECT,
+    RESET_CURRENT_PROJECT, UPDATE_CURRENT_PROJECT } from './types'
      
      
      
@@ -26,15 +26,15 @@
         }
         
       }
-      function createClient(client){
+      function createProject(project){
         return function(dispatch){  
-            fetch("http://localhost:3000/clients", {
+            fetch("http://localhost:3000/projects", {
                 headers: {
                   'Accept': 'application/json',
                   'Content-Type': 'application/json'
                 },
                 method: "POST",
-                body: JSON.stringify(client)
+                body: JSON.stringify(project)
             } ).then(r => r.json())
             .then(user => {
                 dispatch({type: SET_CURRENT_USER, payload: user})
@@ -69,7 +69,7 @@
       }
 
       function addTask(task){
-        console.log("reached add task action")
+     
         return function(dispatch){  
             fetch(`http://localhost:3000/tasks`, {
                 headers: {
@@ -88,14 +88,14 @@
         }
       }
 
-      function updateCurrentClient(client){
-          console.log("reached update current client action")
+      function updateCurrentProject(project){
+          console.log("reached update current project action")
           return function(dispatch){
-            fetch(`http://localhost:3000/clients/${client.id}`) 
+            fetch(`http://localhost:3000/projects/${project.id}`) 
            .then(r => r.json())
-            .then(client => {
+            .then(project => {
                 
-                dispatch({type: SET_CURRENT_CLIENT, payload: client})
+                dispatch({type: SET_CURRENT_PROJECT, payload: project})
                 }
             )
           }
@@ -106,20 +106,20 @@
         return {type: SET_CURRENT_USER, payload: user}
       }
 
-      function resetCurrentClient(){
-          return {type: RESET_CURRENT_CLIENT}
+      function resetCurrentProject(){
+          return {type: RESET_CURRENT_PROJECT}
       }
 
 
       export {
           login,
           updateUsernameForm,
-          createClient,
+          createProject,
           deleteTaskboardAlert,
           deleteTaskboard,
           addTask,
-          updateCurrentClient,
+          updateCurrentProject,
           updateCurrentUser,
-          resetCurrentClient
+          resetCurrentProject
       }
   

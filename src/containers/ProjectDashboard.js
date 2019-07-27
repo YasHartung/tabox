@@ -3,15 +3,15 @@ import { connect } from 'react-redux'
 
 import {  Button } from 'react-bootstrap';
 
-import { updateCurrentUser, resetCurrentClient} from '../actions'
+import { updateCurrentUser, resetCurrentProject} from '../actions'
 
 import TaskboardContainer from './TaskboardContainer';
 import SessionContainer from './SessionContainer'
 
-class ClientDashboard extends React.Component{
+class ProjectDashboard extends React.Component{
 
     handleClick = () => {
-        fetch(`http://localhost:3000/clients/${this.props.currentClient.id}`, {
+        fetch(`http://localhost:3000/projects/${this.props.currentProject.id}`, {
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ class ClientDashboard extends React.Component{
         .then(user => {
             this.props.updateCurrentUser(user)
             }
-        ).then(this.props.resetCurrentClient)
+        ).then(this.props.resetCurrentProject)
         
        
     }
@@ -33,8 +33,8 @@ class ClientDashboard extends React.Component{
             
              <SessionContainer />
 
-             <Button variant="danger" onClick={this.handleClick}>Delete Client</Button>
-            <p>Contact {this.props.currentClient.name}: email: {this.props.currentClient.email}, tel: {this.props.currentClient.phone}</p>
+             <Button variant="danger" onClick={this.handleClick}>Delete Project</Button>
+           
             </>
         )
     }
@@ -44,4 +44,4 @@ function msp(state){
     return state
 }
 
-export default connect(msp, { updateCurrentUser, resetCurrentClient })(ClientDashboard)
+export default connect(msp, { updateCurrentUser, resetCurrentProject })(ProjectDashboard)

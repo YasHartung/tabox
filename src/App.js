@@ -28,12 +28,6 @@ function msp(state){
   return state
 }
 
-function mdp(dispatch){
-  return{ 
-    like: () => {
-      dispatch({type: "INCREMENT_LIKES"})
-    }
-  }
-}
 
-export default connect(msp, mdp)(App);
+
+export default connect(msp)(App);
