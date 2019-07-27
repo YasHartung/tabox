@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
 
 import TaskboardContainer from './TaskboardContainer';
 import SessionContainer from './SessionContainer'
-import NewClientForm from '../components/NewClientForm'
+import NewProjectForm from '../components/NewProjectForm'
 
 
 class UserDashboard extends React.Component{
@@ -26,10 +26,10 @@ class UserDashboard extends React.Component{
              {
                  this.state.formActive
                  ?
-                 <NewClientForm toggleForm={this.toggleForm}/>
+                 <NewProjectForm toggleForm={this.toggleForm}/>
                  :
                  <>
-                    <Button onClick={this.toggleForm} variant="outline-info" size="sm" className='float-right'> Add a New Client</Button> <br></br><br></br>
+                    <Button onClick={this.toggleForm} variant="outline-info" size="sm" className='float-right'> Add a New Project</Button> <br></br><br></br>
                     <TaskboardContainer/>
                     
                     <SessionContainer />

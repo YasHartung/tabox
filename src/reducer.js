@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER, UPDATE_USERNAME_FORM, TOGGLE_DELETE_ALERT, SET_CURRENT_CLIENT,  RESET_CURRENT_CLIENT } from './types'
+import { SET_CURRENT_USER, UPDATE_USERNAME_FORM, TOGGLE_DELETE_ALERT, SET_CURRENT_PROJECT,  RESET_CURRENT_PROJECT } from './types'
 
 
 const defaultState = {
@@ -6,7 +6,7 @@ const defaultState = {
    usernameForm: "",
    deleteAlertTaskboard: false,
    currentTaskboard: null,
-   currentClient: {id: null}
+   currentProject: {id: null}
    
   }
 
@@ -22,10 +22,10 @@ function reducer(prevState = defaultState, action){
       return {...prevState, usernameForm: action.payload}
     case TOGGLE_DELETE_ALERT:
       return{...prevState, currentTaskboard: action.payload, deleteAlertTaskboard: !prevState.deleteAlertTaskboard}
-    case SET_CURRENT_CLIENT:
-      return{...prevState, currentClient: action.payload}
-    case RESET_CURRENT_CLIENT:
-      return {...prevState, currentClient: {id: null}}
+    case SET_CURRENT_PROJECT:
+      return{...prevState, currentProject: action.payload}
+    case RESET_CURRENT_PROJECT:
+      return {...prevState, currentProject: {id: null}}
     default:
       return prevState
   }
