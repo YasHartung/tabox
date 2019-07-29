@@ -27,24 +27,25 @@ class Dashboard extends React.Component{
       
   }
 
-  handleSubmit = () => {
-    fetch(`http://localhost:3000/sessions`, {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "POST",
-      body: JSON.stringify({tabs: this.state.session, project_id: this.state.project, comment: this.state.comment})
-  } ).then(r => r.json())
-  .then(user => {
-          this.props.updateCurrentUser(user)
-      }
-  ).then( () => {
-    if(this.props.currentProject.id){
+  handleSubmit = (e) => {
+      e.preventDefault()
+      fetch(`http://localhost:3000/sessions`, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify({tabs: this.state.session, project_id: this.state.project, comment: this.state.comment})
+        } ).then(r => r.json())
+        .then(user => {
+                this.props.updateCurrentUser(user)
+            }
+        ).then( () => {
+          if(this.props.currentProject){
 
-      this.props.updateCurrentProject(this.props.currentProject)
-    }
-  })
+            this.props.updateCurrentProject(this.props.currentProject)
+          }
+        })
       this.handleHide()
   }
 
@@ -59,18 +60,23 @@ class Dashboard extends React.Component{
     this.setState({[e.target.name]: e.target.value})
   }
 
-  componentWillUnmount(){
+  componentWillUnmount = ()=>{
     clearInterval(interval);
   }
+
+  findCurrentProject =()=>{
+    
+    return this.props.currentUser.projects.find(project => project.id === this.props.currentProject)
+  }
   render(){
-    console.log(this.state)
+    
     this.checkForSession()
         return  (
           <>
           <Container>
             <Row>
               <Col>
-              <h4>Welcome, {this.props.currentUser.username}. Here's {this.props.currentProject.id ? this.props.currentProject.name : "your"} Dashboard</h4>
+              <h4>Welcome, {this.props.currentUser.username}. Here's {this.props.currentProject ? this.findCurrentProject().name : "your"} Dashboard</h4>
               </Col>
             </Row>
             <Row>
@@ -79,11 +85,11 @@ class Dashboard extends React.Component{
               </Col>
               <Col xs={9}>
                 {
-                  this.props.currentProject.id
+                  this.props.currentProject
                   ?
-                  <ProjectDashboard/>
+                  <ProjectDashboard findCurrentProject={this.findCurrentProject}/>
                   :
-                  <UserDashboard />
+                  <UserDashboard findCurrentProject={this.findCurrentProject}/>
                 }
                 
               </Col>

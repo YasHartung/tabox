@@ -14,7 +14,7 @@ class ProjectList extends React.Component {
             
             <br></br>
             <br></br>
-            {this.props.currentProject.id
+            {this.props.currentProject
             ?
             <Button onClick={this.props.resetCurrentProject} variant="outline-info"> My Dashboard</Button>
             :
@@ -25,7 +25,7 @@ class ProjectList extends React.Component {
             <ListGroup>
         
                 {this.props.currentUser.projects.map(project => {
-                 return   <ListGroup.Item onClick={()=> this.props.updateCurrentProject(project)} variant="info" key={project.id}>{project.name}</ListGroup.Item>
+                 return   <ListGroup.Item onClick={()=> this.props.updateCurrentProject(project.id)} variant="info" key={project.id}>{project.name}</ListGroup.Item>
                 })
             }
             </ListGroup>

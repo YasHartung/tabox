@@ -1,11 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { updateCurrentUser, updateCurrentProject } from '../actions'
+import {   deleteSession } from '../actions'
 
-import {  Button, Table } from 'react-bootstrap';
+import {  Button, Table, Modal } from 'react-bootstrap';
 
 class SessionContainer extends React.Component{
+    state={
+        deleteSession: false,
+        selectedSession: null
+    }
 
     restoreSession = (session) => {
      
@@ -16,14 +20,27 @@ class SessionContainer extends React.Component{
 
 
     sessionTable = () => {
-        console.log("sessionTable", this.props.currentProject.sessions )
-        return this.props.currentProject.sessions.reverse()
+     
+        return this.props.findCurrentProject().sessions.reverse()
     }
 
+
+    toggleDeleteSession = (session) => {
+    
+        this.setState({deleteSession: !this.state.deleteSession, selectedSession: session})
+    }
+    
+    deleteSession = () => {
+        this.props.deleteSession(this.state.selectedSession)
+        this.toggleDeleteSession(null)
+    }
+    
+
     render(){
+    
         return(
             <>
-            {this.props.currentProject.id
+            {this.props.currentProject
             ?
             <Table striped bordered hover size="sm">
                 <thead>
@@ -45,7 +62,7 @@ class SessionContainer extends React.Component{
                                     <td>{session.created_at.slice(0,10)}</td>
                                     <td>{session.comment}</td>
                                     <td><Button variant="info" size="sm" onClick={()=> this.restoreSession(session)}>Restore</Button></td>
-                                    <td>X</td>
+                                    <td><button onClick={() => this.toggleDeleteSession(session)}>X</button></td>
                                 </tr>
                             )
                          })
@@ -57,13 +74,24 @@ class SessionContainer extends React.Component{
             :
             null
             }
-            {
-                this.props.currentProject.id
-                ?
-                <Button variant='info' onClick={this.getSession}>Pull Chrome Session from Extension</Button>
-                :
-                null
-            }
+          
+                <Modal
+                    size="sm"
+                    show={this.state.deleteSession}
+                    onHide={()=>this.toggleDeleteSession(null)}
+                    aria-labelledby="example-modal-sizes-title-sm"
+                    >
+                    <Modal.Header closeButton>
+                    <Modal.Title id="example-modal-sizes-title-sm">
+                        Are you sure you want to delete this session?
+                    </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Button onClick={this.deleteSession}variant="info">Delete Session</Button>
+                    </Modal.Body>
+                </Modal>
+            
+            
                 
             </>
         )
@@ -71,7 +99,7 @@ class SessionContainer extends React.Component{
 }
 
 function msp(state){
-    console.log("Session container state", state)
+    
     return state
 }
-export default connect(msp, { updateCurrentUser, updateCurrentProject } )(SessionContainer)
+export default connect(msp, {   deleteSession } )(SessionContainer)

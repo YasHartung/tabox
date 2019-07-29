@@ -11,7 +11,7 @@ import SessionContainer from './SessionContainer'
 class ProjectDashboard extends React.Component{
 
     handleClick = () => {
-        fetch(`http://localhost:3000/projects/${this.props.currentProject.id}`, {
+        fetch(`http://localhost:3000/projects/${this.props.currentProject}`, {
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
@@ -20,18 +20,19 @@ class ProjectDashboard extends React.Component{
             body: JSON.stringify({})
         } ).then(r => r.json())
         .then(user => {
+            this.props.resetCurrentProject()
             this.props.updateCurrentUser(user)
             }
-        ).then(this.props.resetCurrentProject)
+        )
         
        
     }
     render(){
         return(
             <>
-             <TaskboardContainer/>
+             <TaskboardContainer findCurrentProject={this.props.findCurrentProject}/>
             
-             <SessionContainer />
+             <SessionContainer findCurrentProject={this.props.findCurrentProject}/>
 
              <Button variant="danger" onClick={this.handleClick}>Delete Project</Button>
            

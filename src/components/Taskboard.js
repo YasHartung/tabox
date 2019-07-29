@@ -23,7 +23,7 @@ class Taskboard extends React.Component{
             this.setState({formActive: true})
         }
         if(e.target.className === "close icon"){
-            console.log("clicked")
+          
             this.props.deleteTaskboardAlert(this.props.taskboard)
         }
     }
@@ -62,7 +62,7 @@ class Taskboard extends React.Component{
 
     addTaskToBoard = (e) =>{
         e.preventDefault()
-        console.log(this.state)
+     
         let task ={
             task_id: this.state.currentTask.id,
             taskboard_id: this.state.selectedTaskboard
@@ -83,13 +83,13 @@ class Taskboard extends React.Component{
     
     
     handleSelected = (e) => {
-        console.log(e.target.value)
+       
         this.setState({selectedTaskboard: e.target.value})
     }
 
     render(){
 
-        console.log("taskboard props",this.props)
+      
 
     
         return(

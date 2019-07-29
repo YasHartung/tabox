@@ -1,6 +1,6 @@
 
  import { SET_CURRENT_USER, UPDATE_USERNAME_FORM, TOGGLE_DELETE_ALERT, SET_CURRENT_PROJECT,
-    RESET_CURRENT_PROJECT, UPDATE_CURRENT_PROJECT } from './types'
+    RESET_CURRENT_PROJECT } from './types'
      
      
      
@@ -89,26 +89,41 @@
       }
 
       function updateCurrentProject(project){
-          console.log("reached update current project action")
-          return function(dispatch){
-            fetch(`http://localhost:3000/projects/${project.id}`) 
-           .then(r => r.json())
-            .then(project => {
-                
-                dispatch({type: SET_CURRENT_PROJECT, payload: project})
-                }
-            )
-          }
+          return {type: SET_CURRENT_PROJECT, payload: project}
 
       }
       function updateCurrentUser(user){
-          
         return {type: SET_CURRENT_USER, payload: user}
       }
 
       function resetCurrentProject(){
           return {type: RESET_CURRENT_PROJECT}
       }
+
+      function deleteSession(session){
+          return function(dispatch){  
+            fetch(`http://localhost:3000/sessions/${session.id}`, {
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                method: "DELETE",
+                body: JSON.stringify(session)
+            } ).then(r => r.json())
+            .then(user => {
+              console.log("after fetch session delete", user)
+                dispatch({type: SET_CURRENT_USER, payload: user})
+                }
+            ).then(()=>{
+              console.log("about to update current project")
+              updateCurrentProject({id: session.project_id})
+            })
+              
+           
+          
+        }
+      }
+      
 
 
       export {
@@ -120,6 +135,7 @@
           addTask,
           updateCurrentProject,
           updateCurrentUser,
-          resetCurrentProject
+          resetCurrentProject,
+          deleteSession
       }
   
