@@ -89,22 +89,10 @@
       }
 
       function updateCurrentProject(project){
-          console.log("updateCurrentProject", project)
-          
-          // return function(dispatch){
-          //   fetch(`http://localhost:3000/projects/${project.id}`) 
-          //  .then(r => r.json())
-          //   .then(project => {
-          //       console.log("currentproject after delete session update", project)
-          //       dispatch({type: SET_CURRENT_PROJECT, payload: project})
-          //       }
-          //   )
-          // }
           return {type: SET_CURRENT_PROJECT, payload: project}
 
       }
       function updateCurrentUser(user){
-          
         return {type: SET_CURRENT_USER, payload: user}
       }
 

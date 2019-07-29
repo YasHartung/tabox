@@ -69,7 +69,7 @@ class Dashboard extends React.Component{
     return this.props.currentUser.projects.find(project => project.id === this.props.currentProject)
   }
   render(){
-    console.log("dashboard props", this.props)
+    
     this.checkForSession()
         return  (
           <>
