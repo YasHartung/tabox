@@ -20,7 +20,7 @@ class TaskboardContainer extends React.Component{
         let taskboard={
             name: this.state.title,
             user_id: this.props.currentUser.id,
-            project_id: this.props.currentProject.id
+            project_id: this.props.currentProject
             
         }
         
@@ -51,7 +51,7 @@ class TaskboardContainer extends React.Component{
                 {
                     this.props.currentUser.taskboards
                     ?
-                    this.props.currentUser.taskboards.filter(taskboard =>  this.props.currentProject.id === taskboard.project_id).map(taskboard => {
+                    this.props.currentUser.taskboards.filter(taskboard =>  this.props.currentProject === taskboard.project_id).map(taskboard => {
                         return  <Taskboard key={taskboard.name} taskboard={taskboard}/>
                     })
                     :

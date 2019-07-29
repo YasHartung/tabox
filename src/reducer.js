@@ -6,7 +6,7 @@ const defaultState = {
    usernameForm: "",
    deleteAlertTaskboard: false,
    currentTaskboard: null,
-   currentProject: {id: null}
+   currentProject:  null
    
   }
 
@@ -23,9 +23,10 @@ function reducer(prevState = defaultState, action){
     case TOGGLE_DELETE_ALERT:
       return{...prevState, currentTaskboard: action.payload, deleteAlertTaskboard: !prevState.deleteAlertTaskboard}
     case SET_CURRENT_PROJECT:
+    
       return{...prevState, currentProject: action.payload}
     case RESET_CURRENT_PROJECT:
-      return {...prevState, currentProject: {id: null}}
+      return {...prevState, currentProject: null}
     default:
       return prevState
   }
