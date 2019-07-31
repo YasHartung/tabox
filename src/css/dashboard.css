@@ -1,0 +1,27 @@
+.dashboard {
+    display: grid;
+    grid-template-columns: 2fr 5fr 1fr;
+    grid-template-rows: 1fr 5fr;
+    justify-self: center;
+
+}
+
+#dashboard-banner {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    
+}
+
+#project-list {
+    margin-top: 30%;
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: center;
+}
+
+.specific-dashboard {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: center;
+}

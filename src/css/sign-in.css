@@ -1,0 +1,46 @@
+.sign-in {
+    height: -webkit-fill-available;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 45% 45%;
+    grid-gap: 5%;
+    grid-template-areas: 
+    "banner"
+    "sign-in-form";
+  }
+  .sign-in-form {
+    
+    grid-area: "sign-in-form"
+  }
+  
+  .sign-in-banner {
+    padding-top: 18%;
+    background-color: #DADADF;
+    grid-area: "banner"
+  }
+  
+  #username {
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px; 
+    width: 200px;
+    height: 6%; 
+    border-style: solid;
+    border-width: thin;
+    border-color: #C0BEC4;
+  
+  }
+  
+  .button {
+    border-radius: 10px;
+    padding: 5px; 
+    width: 100px;
+    height: 6%; 
+  }
+
+  .divider {
+    width:5px;
+    height:auto;
+    display:inline-block;
+  }
+  

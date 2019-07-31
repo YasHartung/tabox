@@ -1,0 +1,41 @@
+#taskboard-container {
+    display:flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 25%;
+    left: 23%;
+    width: 74%;
+    padding-top: 1.8%;
+    background-color: #f9f9f9;
+    justify-content: flex-start;
+}
+
+#add-board {
+    border-color: transparent;
+    background-color: #DDDDDE;
+    margin: 17px 18.5px;
+    margin-top: 0px;
+    border-radius: 0%;
+    height: 175px;
+    width: 175px;
+    font-family: Helvetiva;
+    font-size: 5em;
+    color: #5AC9DF;
+    text-align: center;
+    font-style: bolder;
+}
+
+#add-board:hover {
+    background-color:#5AC9DF;
+    margin: 17px 18.5px;
+    margin-top: 0px;
+    border-radius: 0%;
+    height: 175px;
+    width: 175px;
+    font-family: Helvetiva;
+    font-size: 5em;
+    color: white;
+    text-align: center;
+    font-style: bolder;
+    border-color: transparent;
+}

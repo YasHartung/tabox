@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
+import '../css/TaskboardContainer.css'
 import { Modal, Button, Form } from 'react-bootstrap';
 
 
@@ -47,7 +47,7 @@ class TaskboardContainer extends React.Component{
         
 
         return(
-            <>
+            <div id="taskboard-container">
                 {
                     this.props.currentUser.taskboards
                     ?
@@ -59,8 +59,8 @@ class TaskboardContainer extends React.Component{
                 }
                 
                
-                <Button variant="info" onClick={this.handleShow}>
-                    Add Taskboard
+                <Button id="add-board" variant="info" onClick={this.handleShow}>
+                    +
                 </Button>
                 
                 <Modal show={this.state.show} onHide={this.handleClose}>
@@ -100,7 +100,7 @@ class TaskboardContainer extends React.Component{
                 null
                 }
               
-            </>
+            </div>
         )
     }
 }

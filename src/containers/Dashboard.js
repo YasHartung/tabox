@@ -2,9 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { updateCurrentProject, updateCurrentUser } from '../actions'
+import '../css/dashboard.css'
 
 import ProjectList from './ProjectList'
 import ProjectDashboard from './ProjectDashboard'
+import NewProjectForm from '../components/NewProjectForm'
 import { Container, Row, Col, Modal, Form, Button } from 'react-bootstrap';
 import UserDashboard from './UserDashboard'
 let interval = null
@@ -14,8 +16,15 @@ class Dashboard extends React.Component{
     show: false,
     session: '',
     comment: '',
-    project: 'select'
+    project: 'select',
+    formActive: false
   }
+
+  
+
+toggleForm=() =>{
+    this.setState({formActive: !this.state.formActive})
+}
 
   getSession = () => {
     let urlStrings =  localStorage.getItem("chromeSaveSession")
@@ -69,34 +78,39 @@ class Dashboard extends React.Component{
     return this.props.currentUser.projects.find(project => project.id === this.props.currentProject)
   }
   render(){
-    
+    console.log(this.state)
     this.checkForSession()
         return  (
-          <>
-          <Container>
-            <Row>
-              <Col>
-              <h4>Welcome, {this.props.currentUser.username}. Here's {this.props.currentProject ? this.findCurrentProject().name : "your"} Dashboard</h4>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={3}>
-                <ProjectList/>
-              </Col>
-              <Col xs={9}>
+          <div className="dashboard">
+          
+              <h4 id="dashboard-banner">Welcome, {this.props.currentUser.username}. Here's {this.props.currentProject ? this.findCurrentProject().name : "your"} Dashboard</h4>
+            
+            
+             
+                <ProjectList id="project-list"  toggleForm={this.toggleForm}/>
+             
+                <div className='specific-dashboard'>
+
                 {
                   this.props.currentProject
                   ?
-                  <ProjectDashboard findCurrentProject={this.findCurrentProject}/>
+                  <ProjectDashboard findCurrentProject={this.findCurrentProject} />
                   :
-                  <UserDashboard findCurrentProject={this.findCurrentProject}/>
+                  <UserDashboard findCurrentProject={this.findCurrentProject} />
                 }
-                
-              </Col>
+                {
+                 this.state.formActive
+                 ?
+                 <NewProjectForm formActive={this.state.formActive} toggleForm={this.toggleForm}/>
+                 :
+                 null
+                 }
+                </div>
              
-            </Row>
+             
+           
             
-          </Container>
+        
           <Modal show={this.state.show} onHide={this.handleHide}>
             <Form>
               <Modal.Title>
@@ -123,7 +137,7 @@ class Dashboard extends React.Component{
               </Modal.Footer>
             </Form>
           </Modal>
-          </>
+          </div>
         )
       }
 }

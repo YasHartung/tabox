@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
+import '../css/Taskboard.css'
 import {deleteTaskboardAlert, addTask, updateCurrentUser} from '../actions'
 
 import { Icon } from 'semantic-ui-react'
-import { ListGroup, Card, Form, Button } from 'react-bootstrap';
+import {  Card, Form, Button } from 'react-bootstrap';
 
 
 class Taskboard extends React.Component{
@@ -93,7 +93,7 @@ class Taskboard extends React.Component{
 
     
         return(
-            <Card style={{ width: '15rem' }}>
+            <Card  id="t-board">
                 <Card.Title xs={10}>
                 {this.props.taskboard.name}
                 <Icon  onClick={this.handleClick} name="close"/>
@@ -120,16 +120,16 @@ class Taskboard extends React.Component{
                             </Button>
                         </Form.Group>
                     </Form>
-                    <Button variant="outline-info" onClick={()=>this.completeTask()} >Completed?</Button>
+                    <Button  onClick={()=>this.completeTask()} >Completed?</Button>
                     </>
                     :
 
-                <ListGroup variant="flush">
+                <ul id='task-list' >
                     {this.props.taskboard.tasks.map(task =>{
-                        return <ListGroup.Item key={task.id} onClick={() => this.clickedTask(task)} xs={10} >{task.content}</ListGroup.Item>
+                        return <li id='task' key={task.id} onClick={() => this.clickedTask(task)} xs={10} >{task.content}</li>
                     })}
                     
-                    <ListGroup.Item xs={10} >
+                    <li xs={10} >
                         {this.state.formActive
                         ?
                         <Form onSubmit={this.handleSubmit}>
@@ -138,9 +138,9 @@ class Taskboard extends React.Component{
                             </Form.Group>
                         </Form>
                         :
-                        <Icon  onClick={this.handleClick} name="add"/>}
-                    </ListGroup.Item>
-                </ListGroup>
+                        <Icon id='new-task' onClick={this.handleClick} name="add"/>}
+                    </li>
+                </ul>
                     }
             </Card>
         )

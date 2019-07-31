@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import '../App.css';
+import '../css/sign-in.css';
 
 import { login, updateUsernameForm} from '../actions'
 
@@ -19,9 +20,11 @@ function SignIn(props){
       
         <form onSubmit={(e) => { e.preventDefault(); props.login(props.usernameForm)}}>
 
-          <label for='username'>Username:</label>
-          <input  id="username" placeholder=" Enter Username" onChange={(e) => props.updateUsernameForm(e.target.value)} name="username" value={props.usernameForm} />
-      
+          <label> Username:
+            <div className='divider'/>
+            <input  id="username" placeholder=" Enter Username" onChange={(e) => props.updateUsernameForm(e.target.value)} name="username" value={props.usernameForm} />
+          </label>
+          <div className='divider'/>  
      
         <button className='button' type="submit">
           Submit
