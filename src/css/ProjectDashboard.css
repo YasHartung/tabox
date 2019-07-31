@@ -1,0 +1,20 @@
+#delete-proj-btn{
+    position: absolute;
+    background-color: transparent; 
+    border-color: transparent;
+    border-radius: 0%;
+    padding: 5px; 
+    bottom: 5%;
+    left: 50%;
+}
+
+#delete-proj-btn:hover{
+    position: absolute;
+    background-color: #F34B4B; 
+    border-color: #ddd;
+    border-radius: 0%;
+    padding: 5px; 
+    bottom: 5%;
+    left: 50%;
+    color: white;
+}

@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import {  Button } from 'react-bootstrap';
 
+import '../css/ProjectDashboard.css'
 import { updateCurrentUser, resetCurrentProject} from '../actions'
 
 import TaskboardContainer from './TaskboardContainer';
@@ -29,14 +29,20 @@ class ProjectDashboard extends React.Component{
     }
     render(){
         return(
-            <>
+            <div >
              <TaskboardContainer findCurrentProject={this.props.findCurrentProject}/>
-            
-             <SessionContainer findCurrentProject={this.props.findCurrentProject}/>
-
-             <Button variant="danger" onClick={this.handleClick}>Delete Project</Button>
+             {
+                       this.props.findCurrentProject() && this.props.findCurrentProject().sessions.length > 0
+                       ?
+                       <SessionContainer findCurrentProject={this.props.findCurrentProject}/>
+                        :
+                        null
+                    }
            
-            </>
+
+             <button id='delete-proj-btn' onClick={this.handleClick}>Delete Project</button>
+           
+            </div>
         )
     }
 }

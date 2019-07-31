@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import '../css/UserDashboard.css'
-import { Button } from 'react-bootstrap';
+
 
 import TaskboardContainer from './TaskboardContainer';
-import SessionContainer from './SessionContainer'
+
 
 
 
@@ -13,19 +13,20 @@ class UserDashboard extends React.Component{
   
  
     render(){
+
         return(
-            <>
+            <div>
            
              
-                 <>
-                    <button id='add-project-button' onClick={this.toggleForm}   > Add a New Project</button> 
+                 
+                   
                     <TaskboardContainer/>
                     
-                    <SessionContainer />
-                </>
+                    
+                
              
              
-            </>
+            </div>
         )
     }
 }

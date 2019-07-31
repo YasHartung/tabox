@@ -48,20 +48,20 @@ class TaskboardContainer extends React.Component{
 
         return(
             <div id="taskboard-container">
+                <Button id="add-board" variant="info" onClick={this.handleShow}>
+                    +
+                </Button>
                 {
                     this.props.currentUser.taskboards
                     ?
                     this.props.currentUser.taskboards.filter(taskboard =>  this.props.currentProject === taskboard.project_id).map(taskboard => {
-                        return  <Taskboard key={taskboard.name} taskboard={taskboard}/>
+                        return  <Taskboard key={taskboard.id} taskboard={taskboard}/>
                     })
                     :
                     null
                 }
                 
                
-                <Button id="add-board" variant="info" onClick={this.handleShow}>
-                    +
-                </Button>
                 
                 <Modal show={this.state.show} onHide={this.handleClose}>
                     <Modal.Body>

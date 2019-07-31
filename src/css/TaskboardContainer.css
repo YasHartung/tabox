@@ -1,16 +1,22 @@
 #taskboard-container {
     display:flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     position: absolute;
-    top: 25%;
+    top: 15%;
     left: 23%;
     width: 74%;
+    height: 40%;
     padding-top: 1.8%;
     background-color: #f9f9f9;
     justify-content: flex-start;
+    overflow-x: scroll;
+    
 }
+#taskboard-container::-webkit-scrollbar {
+    display: none; }
 
 #add-board {
+    flex: 0 0 auto;
     border-color: transparent;
     background-color: #DDDDDE;
     margin: 17px 18.5px;
@@ -26,6 +32,7 @@
 }
 
 #add-board:hover {
+    flex: 0 0 auto;
     background-color:#5AC9DF;
     margin: 17px 18.5px;
     margin-top: 0px;

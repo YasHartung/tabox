@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 
 import {   deleteSession } from '../actions'
 
-import {  Button, Table, Modal } from 'react-bootstrap';
+import '../css/SessionContainer.css'
+import {  Button,  Modal } from 'react-bootstrap';
 
 class SessionContainer extends React.Component{
     state={
@@ -39,11 +40,10 @@ class SessionContainer extends React.Component{
     render(){
     
         return(
-            <>
+            <div id='session-container'>
             {this.props.currentProject
             ?
-            <Table striped bordered hover size="sm">
-                <thead>
+            <table id="session-table">
                 <tr>
                     
                     <th>Session Created On</th>
@@ -52,7 +52,6 @@ class SessionContainer extends React.Component{
                     <th>Delete Session</th>
                     
                 </tr>
-                </thead>
                 <tbody>
                     {
                         this.sessionTable().map( session => {
@@ -61,15 +60,15 @@ class SessionContainer extends React.Component{
                                     
                                     <td>{session.created_at.slice(0,10)}</td>
                                     <td>{session.comment}</td>
-                                    <td><Button variant="info" size="sm" onClick={()=> this.restoreSession(session)}>Restore</Button></td>
-                                    <td><button onClick={() => this.toggleDeleteSession(session)}>X</button></td>
+                                    <td><button className='restore-session-btn'  onClick={()=> this.restoreSession(session)}>Restore</button></td>
+                                    <td><button className='delete-session-btn' onClick={() => this.toggleDeleteSession(session)}>X</button></td>
                                 </tr>
                             )
                          })
                     }
               
-                </tbody>
-            </Table>
+                 </tbody>
+            </table>
             
             :
             null
@@ -93,7 +92,7 @@ class SessionContainer extends React.Component{
             
             
                 
-            </>
+                </div>
         )
     }
 }

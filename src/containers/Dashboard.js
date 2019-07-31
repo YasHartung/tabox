@@ -4,10 +4,11 @@ import { connect } from 'react-redux'
 import { updateCurrentProject, updateCurrentUser } from '../actions'
 import '../css/dashboard.css'
 
+import logo from '../img/Yasmin-01.png';
 import ProjectList from './ProjectList'
 import ProjectDashboard from './ProjectDashboard'
 import NewProjectForm from '../components/NewProjectForm'
-import { Container, Row, Col, Modal, Form, Button } from 'react-bootstrap';
+import {  Modal, Form, Button } from 'react-bootstrap';
 import UserDashboard from './UserDashboard'
 let interval = null
 
@@ -78,12 +79,14 @@ toggleForm=() =>{
     return this.props.currentUser.projects.find(project => project.id === this.props.currentProject)
   }
   render(){
-    console.log(this.state)
+   
     this.checkForSession()
         return  (
           <div className="dashboard">
-          
-              <h4 id="dashboard-banner">Welcome, {this.props.currentUser.username}. Here's {this.props.currentProject ? this.findCurrentProject().name : "your"} Dashboard</h4>
+              <div id='logo-container'>
+              <img id='logo-t' src={logo} alt="Logo" />
+              </div>
+              <h4 id="dashboard-banner">Dashboard</h4>
             
             
              
