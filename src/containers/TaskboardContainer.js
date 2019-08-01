@@ -34,7 +34,7 @@ class TaskboardContainer extends React.Component{
         }).then(r => r.json())
         .then(user => {
             this.props.updateCurrentUser(user)
-        }).then(() => this.setState({show: false}))
+        }).then(() => this.setState({show: false, title: ''}))
         
     }
     handleChange = (e) => {
