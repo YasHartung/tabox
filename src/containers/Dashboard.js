@@ -64,7 +64,7 @@ toggleForm=() =>{
   }
 
   handleHide = () => {
-    this.setState({show: false})
+    this.setState({show: false, comment: ''})
   }
   handleChange=(e) => {
     this.setState({[e.target.name]: e.target.value})
@@ -114,31 +114,31 @@ toggleForm=() =>{
            
             
         
-          <Modal show={this.state.show} onHide={this.handleHide}>
-            <Form>
+          <Modal id='save-session-modal' show={this.state.show} onHide={this.handleHide}>
+            <form id='save-session-form'>
               <Modal.Title>
                 A Chrome Session Has Been Saved
               </Modal.Title>
-              <Modal.Body>
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Add a Comment to this Session?</Form.Label>
-                    <Form.Control type="comment" placeholder="Enter Comment" onChange={this.handleChange} name="comment" value={this.state.comment} />
-                    <Form.Label>Add Session to a Project?</Form.Label>
-                      <select name="project" onChange={this.handleChange} value={this.state.project}>
+             
+               
+                   
+                    <input id='save-session-input' type="comment" placeholder="Enter Comment" onChange={this.handleChange} name="comment" value={this.state.comment} />
+                  
+                      <select id='save-session-select' name="project" onChange={this.handleChange} value={this.state.project}>
                         <option value='select'>Select a Project</option>
                         {this.props.currentUser.projects.map( project => {
                           return <option key={project.id} value={project.id}>{project.name}</option>
                         })}
                       </select>
                 
-                </Form.Group>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="info" onClick={this.handleSubmit}>
+               
+           
+             
+                <button  id='save-session-btn'onClick={this.handleSubmit}>
                     Save Session
-                </Button>
-              </Modal.Footer>
-            </Form>
+                </button>
+              
+            </form>
           </Modal>
           </div>
         )

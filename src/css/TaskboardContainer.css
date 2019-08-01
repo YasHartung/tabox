@@ -10,10 +10,10 @@
     background-color: #f9f9f9;
     justify-content: flex-start;
     overflow-x: scroll;
+    overflow-y: hidden;
     
 }
-#taskboard-container::-webkit-scrollbar {
-    display: none; }
+
 
 #add-board {
     flex: 0 0 auto;

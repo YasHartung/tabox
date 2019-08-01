@@ -1,16 +1,18 @@
-.sign-in {
-    height: -webkit-fill-available;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 45% 45%;
-    grid-gap: 5%;
-    grid-template-areas: 
-    "banner"
-    "sign-in-form";
-  }
-  .sign-in-form {
-    
-    grid-area: "sign-in-form"
+#top-sign-in{
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 50%;
+  width: 100%;
+  background-color: #DADADF;
+}
+  #submitform {
+   position:absolute;
+   top: 50%;
+   left: 22%;
+   height: 30%;
+   width: 50%;
+   background-color:white
   }
   
   .sign-in-banner {
@@ -20,22 +22,30 @@
   }
   
   #username {
+    position: absolute;
     width: 100%;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     padding: 5px; 
     width: 200px;
-    height: 6%; 
-    border-style: solid;
-    border-width: thin;
-    border-color: #C0BEC4;
+    height: 15%; 
+    top: 18%;
+    left: 29%;
+    background-color: transparent;
+    border-width: 0px;
+    border-bottom: solid grey;
+    border-bottom-width: 1px;
   
   }
   
-  .button {
-    border-radius: 10px;
+ #sign-in-button{
+    position: absolute;
+    border-radius: 0px;
     padding: 5px; 
-    width: 100px;
-    height: 6%; 
+    width: 80px;
+    height: 18%; 
+    top: 15%;
+    left: 67%;
+    background-color: #DADADF;
   }
 
   .divider {
@@ -44,3 +54,21 @@
     display:inline-block;
   }
   
+  #sign-in-label{
+    position:absolute;
+    top: 20%;
+    left: 17%;
+  }
+  #logo-sign-in{
+    position: absolute;
+    height: 265px;
+    width: 265px;
+    top: 0%;
+    left:37%;
+  }
+
+  #sign-in-prompt{
+    position:absolute;
+    top: 80%;
+    left: 43%;
+  }

@@ -4,7 +4,7 @@ import '../css/Taskboard.css'
 import {deleteTaskboardAlert, addTask, updateCurrentUser} from '../actions'
 
 import { Icon } from 'semantic-ui-react'
-import {  Card, Form } from 'react-bootstrap';
+import {  Card } from 'react-bootstrap';
 
 
 class Taskboard extends React.Component{

@@ -43,3 +43,47 @@
     max-width: 100%;
     max-height: 100%;
 }
+
+#save-session-modal{
+    width: 300px;
+    top: 20%;
+    height: 52%;
+    border-radius: 0%;
+    padding: 10px;
+    align-content: center;
+    text-align: center;
+    background-color: white;
+}
+
+#save-session-btn{
+    position: absolute;
+    background-color: #DDDDDE; 
+    border-radius: 0%;
+    padding: 5px; 
+    width: 50%;
+    top: 300%;
+    left: 25%;
+}
+
+#save-session-input{
+    position: absolute;
+    width: 100%;
+    /* border-radius: 10px; */
+    padding: 5px; 
+    width: 200px;
+    height: 35%; 
+    top: 160%;
+    left: 15%;
+    background-color: transparent;
+    border-width: 0px;
+    border-bottom: solid grey;
+    border-bottom-width: 1px;
+}
+
+#save-session-select{
+    position: absolute;
+    top: 230%;
+    left: 25%;
+    
+
+}
