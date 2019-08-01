@@ -4,7 +4,7 @@ import '../css/Taskboard.css'
 import {deleteTaskboardAlert, addTask, updateCurrentUser} from '../actions'
 
 import { Icon } from 'semantic-ui-react'
-import {  Card, Form, Button } from 'react-bootstrap';
+import {  Card, Form } from 'react-bootstrap';
 
 
 class Taskboard extends React.Component{
@@ -62,6 +62,7 @@ class Taskboard extends React.Component{
 
     addTaskToBoard = (e) =>{
         e.preventDefault()
+        debugger
      
         let task ={
             task_id: this.state.currentTask.id,
@@ -91,7 +92,9 @@ class Taskboard extends React.Component{
 
       
 
-    
+        console.log("Taskboard state",this.state)
+        console.log("Taskboard props",this.props)
+
         return(
             <Card  id="t-board">
                 <Card.Title xs={10}>
@@ -106,21 +109,23 @@ class Taskboard extends React.Component{
                      {this.state.currentTask.content}
                     </Card.Text>
                    
-                    <Form onSubmit={this.addTaskToBoard}>
-                        <Form.Group onSubmit={this.addTaskToBoard} controlId="exampleForm.ControlSelect1">
-                            <Form.Label>Add To Another Taskboard?</Form.Label>
-                            <Form.Control onChange={this.handleSelected} value={this.state.selectedTaskboard} as="select">
-                                {this.props.currentUser.taskboards.filter(taskboard =>  taskboard.project_id === null && taskboard.id !== this.props.taskboard.id).map(taskboard => {
-                                    return  <option value={taskboard.id} key={taskboard.id}>{taskboard.name}</option>
-                                })}
-                            
-                            </Form.Control>
-                            <Button variant="info" type="submit">
-                                Submit
-                            </Button>
-                        </Form.Group>
-                    </Form>
-                    <Button  onClick={()=>this.completeTask()} >Completed?</Button>
+                    <form onSubmit={this.addTaskToBoard}>
+                       
+                            <label id='select-tb-label'>Add To Other Taskboard?</label>
+                            <div id='select-btn-div'>
+                                <select id='select-tb' onChange={this.handleSelected} value={this.state.selectedTaskboard} as="select">
+                                    {this.props.currentUser.taskboards.filter(taskboard =>  taskboard.project_id === null && taskboard.id !== this.props.taskboard.id).map(taskboard => {
+                                        return  <option value={taskboard.id} key={taskboard.id}>{taskboard.name}</option>
+                                    })}
+                                
+                                </select>
+                                <button id='add-to-tb-btn'  type="submit">
+                                    Add
+                                </button>
+                            </div>
+                       
+                    </form>
+                    <button id='complete-task'  onClick={()=>this.completeTask()} >Completed?</button>
                     </>
                     :
 
@@ -129,14 +134,14 @@ class Taskboard extends React.Component{
                         return <li id='task' key={task.id} onClick={() => this.clickedTask(task)} xs={10} >{task.content}</li>
                     })}
                     
-                    <li xs={10} >
+                    <li id='li-new-task' >
                         {this.state.formActive
                         ?
-                        <Form onSubmit={this.handleSubmit}>
-                            <Form.Group >
-                                <Form.Control placeholder="New Task..." onChange={this.handleChange} name="newTask" value={this.state.newTask}/>
-                            </Form.Group>
-                        </Form>
+                        <form id='new-task-form'onSubmit={this.handleSubmit}>
+                        
+                                <input id='new-task-input'placeholder="New Task..." onChange={this.handleChange} name="newTask" value={this.state.newTask}/>
+                          
+                        </form>
                         :
                         <Icon id='new-task' onClick={this.handleClick} name="add"/>}
                     </li>

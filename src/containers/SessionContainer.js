@@ -44,14 +44,16 @@ class SessionContainer extends React.Component{
             {this.props.currentProject
             ?
             <table id="session-table">
-                <tr>
-                    
-                    <th>Session Created On</th>
-                    <th>Comment</th>
-                    <th>Restore Session</th>
-                    <th>Delete Session</th>
-                    
-                </tr>
+                <thead>
+                    <tr>
+                        
+                        <th>Session Created On</th>
+                        <th>Comment</th>
+                        <th>Restore Session</th>
+                        <th>Delete Session</th>
+                        
+                    </tr>
+                </thead>
                 <tbody>
                     {
                         this.sessionTable().map( session => {
@@ -75,7 +77,7 @@ class SessionContainer extends React.Component{
             }
           
                 <Modal
-                    size="sm"
+                    id='delete-session-alert'
                     show={this.state.deleteSession}
                     onHide={()=>this.toggleDeleteSession(null)}
                     aria-labelledby="example-modal-sizes-title-sm"

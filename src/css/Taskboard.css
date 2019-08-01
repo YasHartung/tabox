@@ -30,3 +30,51 @@
     word-wrap: normal;    
    
   }
+  #select-btn-div{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+
+  }
+  #add-to-tb-btn{
+    position: relative;
+    background-color: #DDDDDE; 
+    border-radius: 0%;
+    padding: 5px; 
+    width: 30%;
+    height: 10%;
+    left: 3%;
+  }
+
+  #select-tb{
+    width: 70%;
+    left: 3%;
+    border-radius: 0%;
+  }
+
+  #complete-task{
+    position: relative;
+    background-color: #DDDDDE; 
+    border-radius: 0%;
+    padding: 5px; 
+    width: 50%;
+    height: 15%;
+    left: 20%;
+  }
+
+  #new-task-form{
+    width:100%;
+    height: 100%;
+  }
+  #new-task-imput{
+    width:100%;
+    height: 100%;
+    border-color: transparent;
+    border-bottom-color: grey;
+  }
+
+  #li-new-task{
+    width:100%;
+    height: 100%;
+    padding: 0px 0px 0px 0px;
+  }

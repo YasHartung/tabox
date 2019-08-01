@@ -46,3 +46,52 @@
     font-style: bolder;
     border-color: transparent;
 }
+
+#create-tb-modal {
+    width: 300px;
+    top: 20%;
+    height: 30%;
+    border-radius: 0%;
+    padding: 10px;
+    align-content: center;
+    text-align: center;
+    background-color: white;
+}
+
+#modal-button-create{
+    position: relative;
+    background-color: #DDDDDE; 
+    border-radius: 0%;
+    padding: 5px; 
+    width: 30%;
+    top: 200%;
+    left: 32%;
+}
+#title-label{
+    position: relative;
+    top: 0%;
+    margin-bottom: 20px;
+
+}
+
+#delete-tb-alert{
+    width: 300px;
+    top: 20%;
+    height: 35%;
+    border-radius: 0%;
+    padding: 10px;
+    align-content: center;
+    text-align: center;
+    background-color: white;
+}
+#modal-button-delete{
+    position: absolute;
+    background-color: #DDDDDE; 
+    border-radius: 0%;
+    padding: 5px; 
+    width: 30%;
+    top: 113%;
+    left: 34%;
+   
+}
+

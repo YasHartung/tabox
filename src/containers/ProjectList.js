@@ -22,11 +22,11 @@ class ProjectList extends React.Component {
                 ?
                 <li  onClick={this.props.resetCurrentProject} > My Dashboard</li>
                 :
-                <li class='active' onClick={this.props.resetCurrentProject} > My Dashboard</li>
+                <li className='active' onClick={this.props.resetCurrentProject} > My Dashboard</li>
                 }
                 {this.props.currentUser.projects.map(project => {
                     if(this.props.currentProject === project.id){
-                        return   <li class='active' onClick={()=> this.props.updateCurrentProject(project.id)} key={project.id}>{project.name}</li>
+                        return   <li className='active' onClick={()=> this.props.updateCurrentProject(project.id)} key={project.id}>{project.name}</li>
                     }else{
                         return   <li onClick={()=> this.props.updateCurrentProject(project.id)} key={project.id}>{project.name}</li>
                     }
