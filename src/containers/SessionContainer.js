@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 
 import {   deleteSession } from '../actions'
 
-import {  Button, Table, Modal } from 'react-bootstrap';
+import '../css/SessionContainer.css'
+import {  Button,  Modal } from 'react-bootstrap';
 
 class SessionContainer extends React.Component{
     state={
@@ -39,19 +40,19 @@ class SessionContainer extends React.Component{
     render(){
     
         return(
-            <>
+            <div id='session-container'>
             {this.props.currentProject
             ?
-            <Table striped bordered hover size="sm">
+            <table id="session-table">
                 <thead>
-                <tr>
-                    
-                    <th>Session Created On</th>
-                    <th>Comment</th>
-                    <th>Restore Session</th>
-                    <th>Delete Session</th>
-                    
-                </tr>
+                    <tr>
+                        
+                        <th>Session Created On</th>
+                        <th>Comment</th>
+                        <th>Restore Session</th>
+                        <th>Delete Session</th>
+                        
+                    </tr>
                 </thead>
                 <tbody>
                     {
@@ -61,22 +62,22 @@ class SessionContainer extends React.Component{
                                     
                                     <td>{session.created_at.slice(0,10)}</td>
                                     <td>{session.comment}</td>
-                                    <td><Button variant="info" size="sm" onClick={()=> this.restoreSession(session)}>Restore</Button></td>
-                                    <td><button onClick={() => this.toggleDeleteSession(session)}>X</button></td>
+                                    <td><button className='restore-session-btn'  onClick={()=> this.restoreSession(session)}>Restore</button></td>
+                                    <td><button className='delete-session-btn' onClick={() => this.toggleDeleteSession(session)}>X</button></td>
                                 </tr>
                             )
                          })
                     }
               
-                </tbody>
-            </Table>
+                 </tbody>
+            </table>
             
             :
             null
             }
           
                 <Modal
-                    size="sm"
+                    id='delete-session-alert'
                     show={this.state.deleteSession}
                     onHide={()=>this.toggleDeleteSession(null)}
                     aria-labelledby="example-modal-sizes-title-sm"
@@ -93,7 +94,7 @@ class SessionContainer extends React.Component{
             
             
                 
-            </>
+                </div>
         )
     }
 }

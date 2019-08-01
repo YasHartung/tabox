@@ -1,0 +1,52 @@
+.button {
+    border-radius: 10px;
+    padding: 5px; 
+    width: 100px;
+    height: 6%; 
+}
+
+ul {
+    position: absolute;
+    top: 15%;
+    justify-self: center;
+    width: 20%;
+    list-style-type: none;
+    padding: 0;
+    /* border: 1px solid #ddd; */
+    
+  }
+  
+  ul li {
+    /* border-radius: 0px 50px 0px 0px; */
+    padding: 8px 16px;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    justify-self: left;
+
+    cursor: pointer;
+  }
+  
+  ul li:last-child {
+    border-bottom: none
+  }
+
+
+ 
+
+  ul li:hover{
+    background-color:#DCDCDC;
+    padding: 8px 16px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+  }
+
+  ul li.active {
+    font-weight: bold;
+    background-color: #e6f7fa;
+    padding: 8px 16px;
+    border-bottom: transparent;
+    border-top: transparent;
+    cursor: pointer;
+  }

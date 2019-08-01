@@ -1,0 +1,97 @@
+#taskboard-container {
+    display:flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    top: 15%;
+    left: 23%;
+    width: 74%;
+    height: 40%;
+    padding-top: 1.8%;
+    background-color: #f9f9f9;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    
+}
+
+
+#add-board {
+    flex: 0 0 auto;
+    border-color: transparent;
+    background-color: #DDDDDE;
+    margin: 17px 18.5px;
+    margin-top: 0px;
+    border-radius: 0%;
+    height: 175px;
+    width: 175px;
+    font-family: Helvetiva;
+    font-size: 5em;
+    color: #5AC9DF;
+    text-align: center;
+    font-style: bolder;
+}
+
+#add-board:hover {
+    flex: 0 0 auto;
+    background-color:#5AC9DF;
+    margin: 17px 18.5px;
+    margin-top: 0px;
+    border-radius: 0%;
+    height: 175px;
+    width: 175px;
+    font-family: Helvetiva;
+    font-size: 5em;
+    color: white;
+    text-align: center;
+    font-style: bolder;
+    border-color: transparent;
+}
+
+#create-tb-modal {
+    width: 300px;
+    top: 20%;
+    height: 30%;
+    border-radius: 0%;
+    padding: 10px;
+    align-content: center;
+    text-align: center;
+    background-color: white;
+}
+
+#modal-button-create{
+    position: relative;
+    background-color: #DDDDDE; 
+    border-radius: 0%;
+    padding: 5px; 
+    width: 30%;
+    top: 200%;
+    left: 32%;
+}
+#title-label{
+    position: relative;
+    top: 0%;
+    margin-bottom: 20px;
+
+}
+
+#delete-tb-alert{
+    width: 300px;
+    top: 20%;
+    height: 35%;
+    border-radius: 0%;
+    padding: 10px;
+    align-content: center;
+    text-align: center;
+    background-color: white;
+}
+#modal-button-delete{
+    position: absolute;
+    background-color: #DDDDDE; 
+    border-radius: 0%;
+    padding: 5px; 
+    width: 30%;
+    top: 113%;
+    left: 34%;
+   
+}
+

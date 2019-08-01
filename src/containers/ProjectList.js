@@ -2,8 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import {updateCurrentProject, resetCurrentProject} from '../actions'
+import '../css/project-list.css'
 
-import { ListGroup, Button } from 'react-bootstrap';
+
 
 
 class ProjectList extends React.Component { 
@@ -12,23 +13,27 @@ class ProjectList extends React.Component {
    
         return <div>
             
-            <br></br>
-            <br></br>
-            {this.props.currentProject
-            ?
-            <Button onClick={this.props.resetCurrentProject} variant="outline-info"> My Dashboard</Button>
-            :
-            null
-            }
-            <br></br>
-            <p>Project List</p>
-            <ListGroup>
         
+           
+            <br></br>
+            
+            <ul >
+                {this.props.currentProject
+                ?
+                <li  onClick={this.props.resetCurrentProject} > My Dashboard</li>
+                :
+                <li className='active' onClick={this.props.resetCurrentProject} > My Dashboard</li>
+                }
                 {this.props.currentUser.projects.map(project => {
-                 return   <ListGroup.Item onClick={()=> this.props.updateCurrentProject(project.id)} variant="info" key={project.id}>{project.name}</ListGroup.Item>
-                })
-            }
-            </ListGroup>
+                    if(this.props.currentProject === project.id){
+                        return   <li className='active' onClick={()=> this.props.updateCurrentProject(project.id)} key={project.id}>{project.name}</li>
+                    }else{
+                        return   <li onClick={()=> this.props.updateCurrentProject(project.id)} key={project.id}>{project.name}</li>
+                    }
+                     })
+                 }
+                <li id='add-project-button' onClick={this.props.toggleForm}> + </li>
+            </ul>
         </div>
     }
 }

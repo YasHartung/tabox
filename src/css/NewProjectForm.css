@@ -1,0 +1,75 @@
+#new-proj-form{
+    position: absolute;
+    background-color: transparent;
+    text-align: center;
+    padding: 40px;
+    height: 200%;
+    width: 100%
+}
+
+#new-proj-modal {
+    width: 300px;
+    top: 20%;
+    height: 50%;
+    border-radius: 0%;
+    padding: 20px;
+    align-content: center;
+    text-align: center;
+    background-color: white;
+    
+}
+
+.modal-content{
+    background-color: transparent;
+    border-width: 0px; 
+}
+
+#submit-new-proj-button {
+        position: absolute;
+        background-color: #DDDDDE; 
+        border-radius: 0%;
+        padding: 5px; 
+        width: 100px;
+        height: 50%; 
+        top: 200%;
+        left: 32%;
+     
+}
+#new-proj-name{
+    position: absolute;
+    width: 100%;
+    /* border-radius: 10px; */
+    padding: 5px; 
+    width: 200px;
+    height: 35%; 
+    top: 120%;
+    left: 12%;
+    background-color: transparent;
+    border-width: 0px;
+    border-bottom: solid grey;
+    border-bottom-width: 1px;
+}
+#new-proj-banner {
+    z-index: 50;
+    position: absolute;
+    left: 25%;
+    top: 10%;
+    /* text-align: left; */
+}
+
+/* #labelguy {
+    position: absolute;
+    left: 25%;
+    top: 10%
+
+} */
+
+#submit-new-proj-button:hover {
+    background-color:#5AC9DF;
+    margin-top: 0px;
+    border-radius: 0%;
+    color: white;
+    text-align: center;
+    font-style: bolder;
+    border-color: transparent;
+}

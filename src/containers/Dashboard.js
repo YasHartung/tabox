@@ -2,10 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { updateCurrentProject, updateCurrentUser } from '../actions'
+import '../css/dashboard.css'
 
+import logo from '../img/Yasmin-01.png';
 import ProjectList from './ProjectList'
 import ProjectDashboard from './ProjectDashboard'
-import { Container, Row, Col, Modal, Form, Button } from 'react-bootstrap';
+import NewProjectForm from '../components/NewProjectForm'
+import {  Modal, Form, Button } from 'react-bootstrap';
 import UserDashboard from './UserDashboard'
 let interval = null
 
@@ -14,8 +17,15 @@ class Dashboard extends React.Component{
     show: false,
     session: '',
     comment: '',
-    project: 'select'
+    project: 'select',
+    formActive: false
   }
+
+  
+
+toggleForm=() =>{
+    this.setState({formActive: !this.state.formActive})
+}
 
   getSession = () => {
     let urlStrings =  localStorage.getItem("chromeSaveSession")
@@ -54,7 +64,7 @@ class Dashboard extends React.Component{
   }
 
   handleHide = () => {
-    this.setState({show: false})
+    this.setState({show: false, comment: ''})
   }
   handleChange=(e) => {
     this.setState({[e.target.name]: e.target.value})
@@ -69,61 +79,68 @@ class Dashboard extends React.Component{
     return this.props.currentUser.projects.find(project => project.id === this.props.currentProject)
   }
   render(){
-    
+   
     this.checkForSession()
         return  (
-          <>
-          <Container>
-            <Row>
-              <Col>
-              <h4>Welcome, {this.props.currentUser.username}. Here's {this.props.currentProject ? this.findCurrentProject().name : "your"} Dashboard</h4>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={3}>
-                <ProjectList/>
-              </Col>
-              <Col xs={9}>
+          <div className="dashboard">
+              <div id='logo-container'>
+              <img id='logo-t' src={logo} alt="Logo" />
+              </div>
+              <h4 id="dashboard-banner">Dashboard</h4>
+            
+            
+             
+                <ProjectList id="project-list"  toggleForm={this.toggleForm}/>
+             
+                <div className='specific-dashboard'>
+
                 {
                   this.props.currentProject
                   ?
-                  <ProjectDashboard findCurrentProject={this.findCurrentProject}/>
+                  <ProjectDashboard findCurrentProject={this.findCurrentProject} />
                   :
-                  <UserDashboard findCurrentProject={this.findCurrentProject}/>
+                  <UserDashboard findCurrentProject={this.findCurrentProject} />
                 }
-                
-              </Col>
+                {
+                 this.state.formActive
+                 ?
+                 <NewProjectForm formActive={this.state.formActive} toggleForm={this.toggleForm}/>
+                 :
+                 null
+                 }
+                </div>
              
-            </Row>
+             
+           
             
-          </Container>
-          <Modal show={this.state.show} onHide={this.handleHide}>
-            <Form>
+        
+          <Modal id='save-session-modal' show={this.state.show} onHide={this.handleHide}>
+            <form id='save-session-form'>
               <Modal.Title>
                 A Chrome Session Has Been Saved
               </Modal.Title>
-              <Modal.Body>
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Add a Comment to this Session?</Form.Label>
-                    <Form.Control type="comment" placeholder="Enter Comment" onChange={this.handleChange} name="comment" value={this.state.comment} />
-                    <Form.Label>Add Session to a Project?</Form.Label>
-                      <select name="project" onChange={this.handleChange} value={this.state.project}>
+             
+               
+                   
+                    <input id='save-session-input' type="comment" placeholder="Enter Comment" onChange={this.handleChange} name="comment" value={this.state.comment} />
+                  
+                      <select id='save-session-select' name="project" onChange={this.handleChange} value={this.state.project}>
                         <option value='select'>Select a Project</option>
                         {this.props.currentUser.projects.map( project => {
                           return <option key={project.id} value={project.id}>{project.name}</option>
                         })}
                       </select>
                 
-                </Form.Group>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="info" onClick={this.handleSubmit}>
+               
+           
+             
+                <button  id='save-session-btn'onClick={this.handleSubmit}>
                     Save Session
-                </Button>
-              </Modal.Footer>
-            </Form>
+                </button>
+              
+            </form>
           </Modal>
-          </>
+          </div>
         )
       }
 }

@@ -1,31 +1,36 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { Form, Button, Jumbotron } from 'react-bootstrap';
+import '../App.css';
+import '../css/sign-in.css';
+import logo from '../img/Yasmin-01.png';
+
 import { login, updateUsernameForm} from '../actions'
 
 function SignIn(props){
     
     
     return (
-    <div >
-      <Jumbotron>
-        <h1>Welcome to Freer</h1>
-        <h3>Sign In or Sign Up</h3>
-      </Jumbotron>
-      <Form onSubmit={(e) => {
-        e.preventDefault()
-        props.login(props.usernameForm)
-        }}>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Username:</Form.Label>
-          <Form.Control type="username" placeholder="Enter Username" onChange={(e) => props.updateUsernameForm(e.target.value)} name="username" value={props.usernameForm} placeholder="Enter Username..."/>
+    <div  >
+      <div id='top-sign-in'>
+        <img id='logo-sign-in' src={logo} alt="Logo" />
+        <h3 id='sign-in-prompt'>Sign In or Sign Up</h3>
+      </div>
+    
+
       
-        </Form.Group>
-        <Button variant="info" type="submit">
-          Submit
-        </Button>
-      </Form>
+        <form id="submitform" onSubmit={(e) => { e.preventDefault(); props.login(props.usernameForm)}}>
+
+            <input  id="username" placeholder=" Enter Username" onChange={(e) => props.updateUsernameForm(e.target.value)} name="username" value={props.usernameForm} />
+         
+          
+     
+          <button id='sign-in-button' type="submit">
+            Submit
+          </button>
+    
+        </form>
+      
         
     </div>
     )
