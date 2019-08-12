@@ -101,6 +101,7 @@
       }
 
       function deleteSession(session){
+        
           return function(dispatch){  
             fetch(`http://localhost:3000/sessions/${session.id}`, {
                 headers: {
