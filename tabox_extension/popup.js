@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     saveSessionButton.addEventListener('click', function() {
         chrome.extension.getBackgroundPage().console.log("clicked clicked save")
-        chrome.extension.getBackgroundPage().chrome.tabs.query({}, function(tabs){
+        chrome.extension.getBackgroundPage().chrome.tabs.query({currentWindow: true}, function(tabs){
             //filter out Tabox tabs that are open
             let filteredTabs = tabs.filter( tab => !tab.url.includes("http://localhost:3001"))
             //get only URL out of the tab objects
