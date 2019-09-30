@@ -39,9 +39,13 @@ class Taskboard extends React.Component{
 
     }
 
+    findUserTaskboards = () =>{
+        return this.props.currentUser.taskboards.filter(taskboard =>  taskboard.project_id === null && taskboard.id !== this.props.taskboard.id)
+    }
+
     clickedTask = (task) =>{
         
-        this.setState({currentTask: task})
+        this.setState({currentTask: task, selectedTaskboard: this.findUserTaskboards()[0].id})
     }
 
     completeTask = () =>{
@@ -62,7 +66,7 @@ class Taskboard extends React.Component{
 
     addTaskToBoard = (e) =>{
         e.preventDefault()
-        debugger
+        
      
         let task ={
             task_id: this.state.currentTask.id,
@@ -90,10 +94,6 @@ class Taskboard extends React.Component{
 
     render(){
 
-      
-
-        console.log("Taskboard state",this.state)
-        console.log("Taskboard props",this.props)
 
         return(
             <Card  id="t-board">
@@ -110,19 +110,27 @@ class Taskboard extends React.Component{
                     </Card.Text>
                    
                     <form onSubmit={this.addTaskToBoard}>
-                       
-                            <label id='select-tb-label'>Add To Other Taskboard?</label>
-                            <div id='select-btn-div'>
-                                <select id='select-tb' onChange={this.handleSelected} value={this.state.selectedTaskboard} as="select">
-                                    {this.props.currentUser.taskboards.filter(taskboard =>  taskboard.project_id === null && taskboard.id !== this.props.taskboard.id).map(taskboard => {
-                                        return  <option value={taskboard.id} key={taskboard.id}>{taskboard.name}</option>
-                                    })}
-                                
-                                </select>
-                                <button id='add-to-tb-btn'  type="submit">
-                                    Add
-                                </button>
-                            </div>
+                            {
+                                this.props.currentProject
+                                ?
+                                <>
+                                <label id='select-tb-label'>Add To Other Taskboard?</label>
+                                <div id='select-btn-div'>
+                                    <select id='select-tb' onChange={this.handleSelected} value={this.state.selectedTaskboard} as="select">
+                                        {this.findUserTaskboards().map(taskboard => {
+                                            return  <option value={taskboard.id} key={taskboard.id}>{taskboard.name}</option>
+                                        })}
+                                    
+                                    </select>
+                                    <button id='add-to-tb-btn'  type="submit">
+                                        Add
+                                    </button>
+                                </div>
+                                </>
+                               :
+                               null
+                            }
+                            
                        
                     </form>
                     <button id='complete-task'  onClick={()=>this.completeTask()} >Completed?</button>

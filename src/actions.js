@@ -38,6 +38,8 @@
             } ).then(r => r.json())
             .then(user => {
                 dispatch({type: SET_CURRENT_USER, payload: user})
+                dispatch({type: SET_CURRENT_PROJECT, payload: user.projects[user.projects.length-1].id})
+
                 }
             )
         }
