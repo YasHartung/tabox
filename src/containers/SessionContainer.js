@@ -76,7 +76,7 @@ class SessionContainer extends React.Component{
             :
             null
             }
-          //Modal for delete sessions alert
+          
                 <Modal
                     id='delete-session-alert'
                     show={this.state.deleteSession}
