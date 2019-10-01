@@ -61,7 +61,7 @@ class TaskboardContainer extends React.Component{
                     null
                 }
                 
-               
+               //Modal to add new taskboard
                 
                 <Modal id='create-tb-modal' show={this.state.show} onHide={this.handleClose}>
                     <Modal.Body>
@@ -80,7 +80,7 @@ class TaskboardContainer extends React.Component{
                 {
                     this.props.currentTaskboard
                     ?
-
+                    //Delete taskboard Alert
                     <Modal
                     id='delete-tb-alert'
                     show={this.props.deleteAlertTaskboard}
