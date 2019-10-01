@@ -97,14 +97,14 @@ toggleForm=() =>{
              
                 <div className='specific-dashboard'>
 
-                {
+                { //conditional rendering of project dashboard if there is a current project or the user dashboard
                   this.props.currentProject
                   ?
                   <ProjectDashboard findCurrentProject={this.findCurrentProject} />
                   :
                   <UserDashboard  />
                 }
-                {
+                { //conditional rendering of New Project form
                  this.state.formActive
                  ?
                  <NewProjectForm formActive={this.state.formActive} toggleForm={this.toggleForm}/>
@@ -116,7 +116,7 @@ toggleForm=() =>{
              
            
             
-        
+                 //Modal for saving a session that came from chrome extension
           <Modal id='save-session-modal' show={this.state.show} onHide={this.handleHide}>
             <form id='save-session-form'>
               <Modal.Title>

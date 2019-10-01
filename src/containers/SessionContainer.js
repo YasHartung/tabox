@@ -19,18 +19,19 @@ class SessionContainer extends React.Component{
 
    
 
-
+    //builds sessions table from current user. Orders them from last session to first.
     sessionTable = () => {
      
         return this.props.findCurrentProject().sessions.reverse()
     }
 
-
+    //Toggles session delete alert
     toggleDeleteSession = (session) => {
     
         this.setState({deleteSession: !this.state.deleteSession, selectedSession: session})
     }
     
+    //Deletes session through Actions file
     deleteSession = () => {
         this.props.deleteSession(this.state.selectedSession)
         this.toggleDeleteSession(null)
@@ -75,7 +76,7 @@ class SessionContainer extends React.Component{
             :
             null
             }
-          
+          //Modal for delete sessions alert
                 <Modal
                     id='delete-session-alert'
                     show={this.state.deleteSession}
