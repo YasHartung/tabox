@@ -22,11 +22,12 @@ class Dashboard extends React.Component{
   }
 
   
-
+//Toggles the new project form
 toggleForm=() =>{
     this.setState({formActive: !this.state.formActive})
 }
 
+//Grabs session from local storage. Set on an interval, it checks if a session has been saved by the extension.
   getSession = () => {
     let urlStrings =  localStorage.getItem("chromeSaveSession")
    
@@ -36,7 +37,7 @@ toggleForm=() =>{
     }
       
   }
-
+//Sends new session object to backend.
   handleSubmit = (e) => {
       e.preventDefault()
       fetch(`http://localhost:3000/sessions`, {
@@ -58,14 +59,15 @@ toggleForm=() =>{
         })
       this.handleHide()
   }
-
+//sets interval for checking session
   checkForSession = () => {
      interval = setInterval(this.getSession, 300)
   }
-
+//Hides "save session" modal
   handleHide = () => {
     this.setState({show: false, comment: ''})
   }
+
   handleChange=(e) => {
     this.setState({[e.target.name]: e.target.value})
   }
@@ -74,6 +76,7 @@ toggleForm=() =>{
     clearInterval(interval);
   }
 
+  //Passes current project down to project dashboard
   findCurrentProject =()=>{
     
     return this.props.currentUser.projects.find(project => project.id === this.props.currentProject)
@@ -94,12 +97,12 @@ toggleForm=() =>{
              
                 <div className='specific-dashboard'>
 
-                {
+                { 
                   this.props.currentProject
                   ?
                   <ProjectDashboard findCurrentProject={this.findCurrentProject} />
                   :
-                  <UserDashboard findCurrentProject={this.findCurrentProject} />
+                  <UserDashboard  />
                 }
                 {
                  this.state.formActive
@@ -113,7 +116,7 @@ toggleForm=() =>{
              
            
             
-        
+                 
           <Modal id='save-session-modal' show={this.state.show} onHide={this.handleHide}>
             <form id='save-session-form'>
               <Modal.Title>

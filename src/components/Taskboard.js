@@ -109,30 +109,7 @@ class Taskboard extends React.Component{
                      {this.state.currentTask.content}
                     </Card.Text>
                    
-                    <form onSubmit={this.addTaskToBoard}>
-                            {
-                                this.props.currentProject
-                                ?
-                                <>
-                                <label id='select-tb-label'>Add To Other Taskboard?</label>
-                                <div id='select-btn-div'>
-                                    <select id='select-tb' onChange={this.handleSelected} value={this.state.selectedTaskboard} as="select">
-                                        {this.findUserTaskboards().map(taskboard => {
-                                            return  <option value={taskboard.id} key={taskboard.id}>{taskboard.name}</option>
-                                        })}
-                                    
-                                    </select>
-                                    <button id='add-to-tb-btn'  type="submit">
-                                        Add
-                                    </button>
-                                </div>
-                                </>
-                               :
-                               null
-                            }
-                            
-                       
-                    </form>
+                 
                     <button id='complete-task'  onClick={()=>this.completeTask()} >Completed?</button>
                     </>
                     :

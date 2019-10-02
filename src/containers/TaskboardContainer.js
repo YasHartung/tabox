@@ -12,9 +12,11 @@ class TaskboardContainer extends React.Component{
         show: false,
         title: ""
     }
+    //Add board modal
     handleShow = () => {
         this.setState({show: true})
     }
+    //closes taskboard moadl and sends new taskboard info to backend. updates current user
     handleClose = () => {
 
         let taskboard={
@@ -61,7 +63,7 @@ class TaskboardContainer extends React.Component{
                     null
                 }
                 
-               
+             
                 
                 <Modal id='create-tb-modal' show={this.state.show} onHide={this.handleClose}>
                     <Modal.Body>
@@ -80,7 +82,7 @@ class TaskboardContainer extends React.Component{
                 {
                     this.props.currentTaskboard
                     ?
-
+                    
                     <Modal
                     id='delete-tb-alert'
                     show={this.props.deleteAlertTaskboard}
